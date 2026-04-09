@@ -64,6 +64,7 @@ RUN apk update \
     curl \
     ca-certificates \
     libstdc++ \
+    coreutils \
     git \
     curl
 
