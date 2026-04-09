@@ -59,7 +59,11 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 RUN apk update \
     && apk add --no-cache \
     vim \
-    make
+    make \
+    git \
+    curl \
+    git \
+    curl
 
 # Enable CAP_NET_BIND_SERVICE
 # RUN if [ "${USER}" != "root" ] && [ "${CAP_NET_BIND_SERVICE}" -eq 1 ]; then \
@@ -74,10 +78,12 @@ ENV MISE_VERSION=${MISE_VERSION} \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
     PATH="/mise/shims:$PATH"
 
-# Install mise, setup runtime environments, and configure development tools from template
+# Install mise and setup runtime environments
 RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
-    && mise trust -a && mise install \
-    && git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
+    && mise trust -a && mise install
+
+# Configure development tools from template
+RUN git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
     && cd / \

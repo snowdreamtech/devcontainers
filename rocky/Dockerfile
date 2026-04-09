@@ -60,7 +60,9 @@ RUN set -eux \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install --allowerasing \ 
     vim \
-    make \                                                                                                                                                                                      
+    make \
+    git \
+    curl \                                                                                                                                                                                      
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
@@ -80,10 +82,12 @@ ENV MISE_VERSION=${MISE_VERSION} \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
     PATH="/mise/shims:$PATH"
 
-# Install mise, setup runtime environments, and configure development tools from template
+# Install mise and setup runtime environments
 RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
-    && mise trust -a && mise install \
-    && git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
+    && mise trust -a && mise install
+
+# Configure development tools from template
+RUN git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
     && cd / \
