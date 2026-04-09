@@ -62,7 +62,9 @@ RUN set -eux \
     vim \
     make \
     git \
-    curl \                                                                                                                                                                                      
+    curl \
+    ca-certificates \
+    libstdc++ \                                                                                                                                                                                      
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \

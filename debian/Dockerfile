@@ -65,6 +65,8 @@ RUN set -eux \
     make \
     git \
     curl \
+    ca-certificates \
+    libstdc++6 \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \

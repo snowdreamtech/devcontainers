@@ -62,6 +62,8 @@ RUN apk update \
     make \
     git \
     curl \
+    ca-certificates \
+    libstdc++ \
     git \
     curl
 
