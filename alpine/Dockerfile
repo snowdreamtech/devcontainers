@@ -31,7 +31,8 @@ ARG KEEPALIVE=0 \
     PGID=0 \
     PUID=0  \
     USER=root \
-    WORKDIR=/root 
+    WORKDIR=/root \
+    MISE_VERSION=2026.4.6 
 
 # keep the docker container running
 ENV KEEPALIVE=${KEEPALIVE} \
@@ -63,6 +64,19 @@ RUN apk update \
 # RUN if [ "${USER}" != "root" ] && [ "${CAP_NET_BIND_SERVICE}" -eq 1 ]; then \
     # setcap 'cap_net_bind_service=+ep' `which nginx`; \
     # fi
+
+# Configure mise (polyglot runtime manager) environment variables
+ENV MISE_VERSION=${MISE_VERSION} \
+    MISE_DATA_DIR="/mise" \
+    MISE_CONFIG_DIR="/mise" \
+    MISE_CACHE_DIR="/mise/cache" \
+    MISE_INSTALL_PATH="/usr/local/bin/mise" \
+    PATH="/mise/shims:$PATH"
+
+# Install mise and setup runtime environments
+RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
+    && mise trust -a && mise install
+
 
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 
