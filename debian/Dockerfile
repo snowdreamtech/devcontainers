@@ -63,6 +63,8 @@ RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy install --no-install-recommends \ 
     vim \
     make \
+    git \
+    curl \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \
@@ -83,9 +85,11 @@ ENV MISE_VERSION=${MISE_VERSION} \
     PATH="/mise/shims:$PATH"
 
 # Install mise, setup runtime environments, and configure development tools from template
-RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
-    && mise trust -a && mise install \
-    && git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
+RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh
+
+RUN mise trust -a && mise install
+
+RUN git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
     && cd / \
