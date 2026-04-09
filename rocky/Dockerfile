@@ -3,7 +3,7 @@ FROM snowdreamtech/rocky:10.1
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="DevContainers Image Based On Rocky" \
-    org.opencontainers.image.description="Docker Images for DevContainers On Rocky. (i386,amd64,arm32v5,arm32v7,arm64,mips64le,ppc64le,s390x)" \
+    org.opencontainers.image.description="Docker Images for DevContainers On Rocky. (amd64, arm64)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/devcontainers" \
     org.opencontainers.image.base.name="snowdreamtech/devcontainers:rocky" \
     org.opencontainers.image.licenses="MIT" \

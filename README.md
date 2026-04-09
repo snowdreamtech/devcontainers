@@ -5,7 +5,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/devcontainers)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/devcontainers)
 
-Docker Image packaging for DevContainers. (amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le,riscv64, s390x)
+Docker Image packaging for DevContainers. (amd64, arm32v6, arm32v7, arm64v8)
 
 # Usage
 
@@ -66,7 +66,7 @@ services:
 
 ```bash
 docker buildx create --use --name build --node build --driver-opt network=host
-docker buildx build -t snowdreamtech/devcontainers --platform=linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x . --push
+docker buildx build -t snowdreamtech/devcontainers --platform=linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64 . --push
 ```
 
 ## Reference
