@@ -76,7 +76,9 @@ ENV MISE_VERSION=${MISE_VERSION} \
     MISE_CONFIG_DIR="/mise" \
     MISE_CACHE_DIR="/mise/cache" \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
-    PATH="/mise/shims:$PATH"
+    PATH="/mise/shims:$PATH" \
+    MISE_PYTHON_GITHUB_ATTESTATIONS=false \
+    MISE_GITHUB_ATTESTATIONS=false
 
 # Install mise and setup runtime environments
 RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
