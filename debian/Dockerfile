@@ -81,9 +81,14 @@ ENV MISE_VERSION=${MISE_VERSION} \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
     PATH="/mise/shims:$PATH"
 
-# Install mise and setup runtime environments
+# Install mise, setup runtime environments, and configure development tools from template
 RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
-    && mise trust -a && mise install
+    && mise trust -a && mise install \
+    && git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
+    && cd /tmp/template \
+    && make setup \
+    && cd / \
+    && rm -rf /tmp/template
 
 COPY entrypoint.d /usr/local/bin/entrypoint.d
 
