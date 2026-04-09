@@ -59,7 +59,8 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 RUN set -eux \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install --allowerasing \ 
-    vim \                                                                                                                                                                                      
+    vim \
+    make \                                                                                                                                                                                      
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \

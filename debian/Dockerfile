@@ -62,6 +62,7 @@ RUN set -eux \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy update  \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy install --no-install-recommends \ 
     vim \
+    make \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \

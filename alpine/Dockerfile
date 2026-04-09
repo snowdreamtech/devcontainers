@@ -58,7 +58,8 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 
 RUN apk update \
     && apk add --no-cache \
-    vim
+    vim \
+    make
 
 # Enable CAP_NET_BIND_SERVICE
 # RUN if [ "${USER}" != "root" ] && [ "${CAP_NET_BIND_SERVICE}" -eq 1 ]; then \
