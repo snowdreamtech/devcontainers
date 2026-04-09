@@ -3,7 +3,7 @@ FROM snowdreamtech/alpine:3.22.2
 # OCI annotations to image
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="DevContainers Image Based On Alpine" \
-    org.opencontainers.image.description="Docker Images for DevContainers On Alpine. (amd64, arm32v6, arm32v7, arm64)" \
+    org.opencontainers.image.description="Docker Images for DevContainers On Alpine. (amd64, arm64)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/devcontainers" \
     org.opencontainers.image.base.name="snowdreamtech/devcontainers:alpine" \
     org.opencontainers.image.licenses="MIT" \
