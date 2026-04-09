@@ -1,11 +1,11 @@
-# Devcontainers
+# DevContainers
 
 ![Docker Image Version](https://img.shields.io/docker/v/snowdreamtech/devcontainers)
 ![Docker Image Size](https://img.shields.io/docker/image-size/snowdreamtech/devcontainers/latest)
 ![Docker Pulls](https://img.shields.io/docker/pulls/snowdreamtech/devcontainers)
 ![Docker Stars](https://img.shields.io/docker/stars/snowdreamtech/devcontainers)
 
-Docker Image packaging for Devcontainers. (amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le,riscv64, s390x)
+Docker Image packaging for DevContainers. (amd64, arm32v5, arm32v6, arm32v7, arm64v8, i386, mips64le, ppc64le,riscv64, s390x)
 
 # Usage
 
