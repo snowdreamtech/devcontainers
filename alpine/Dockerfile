@@ -58,15 +58,15 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 
 RUN apk update \
     && apk add --no-cache \
+    bash \
     vim \
     make \
     git \
     curl \
     ca-certificates \
+    gnupg \
     libstdc++ \
-    coreutils \
-    git \
-    curl
+    coreutils
 
 # Enable CAP_NET_BIND_SERVICE
 # RUN if [ "${USER}" != "root" ] && [ "${CAP_NET_BIND_SERVICE}" -eq 1 ]; then \

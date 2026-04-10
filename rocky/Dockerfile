@@ -59,11 +59,13 @@ RUN if [ "${USER}" != "root" ] && [ ! -d "/home/${USER}" ] && [ "${PUID}" -ne 0 
 RUN set -eux \
     && dnf -y --allowerasing update \
     && dnf -y --allowerasing install --allowerasing \ 
+    bash \
     vim \
     make \
     git \
     curl \
     ca-certificates \
+    gnupg2 \
     libstdc++ \                                                                                                                                                                                      
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
