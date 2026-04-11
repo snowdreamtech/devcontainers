@@ -69,6 +69,7 @@ RUN set -eux \
     ca-certificates \
     gpg \
     libstdc++6 \
+    libatomic1 \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \

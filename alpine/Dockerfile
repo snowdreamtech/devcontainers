@@ -66,6 +66,7 @@ RUN apk update \
     ca-certificates \
     gnupg \
     libstdc++ \
+    libatomic \
     coreutils
 
 # Enable CAP_NET_BIND_SERVICE

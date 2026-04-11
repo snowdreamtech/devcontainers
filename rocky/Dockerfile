@@ -66,7 +66,8 @@ RUN set -eux \
     curl \
     ca-certificates \
     gnupg2 \
-    libstdc++ \                                                                                                                                                                                      
+    libstdc++ \
+    libatomic \                                                                                                                                                                                      
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
