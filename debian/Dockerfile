@@ -33,7 +33,8 @@ ARG DEBIAN_FRONTEND=noninteractive \
     PUID=0  \
     USER=root \
     WORKDIR=/root \
-    MISE_VERSION=2026.4.6 
+    MISE_VERSION=2026.4.6 \
+    TEMPLATE_TAG=v0.0.4 
 
 ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     # keep the docker container running
@@ -96,7 +97,7 @@ RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
     && mise trust -a && mise install
 
 # Configure development tools from template
-RUN git clone --depth 1 https://github.com/snowdreamtech/template.git /tmp/template \
+RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
     && cd / \
