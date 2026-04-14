@@ -98,7 +98,6 @@ RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtec
     && make setup \
     && cp .mise.toml /mise/mise.toml \
     && cd /mise \
-    && rm -f .mise.lock mise.lock \
     && mise trust -a \
     && (mise install || true) \
     && cd / \
