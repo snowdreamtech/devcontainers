@@ -98,7 +98,7 @@ RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
 RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
-    && cp .mise.toml /mise/config.toml \
+    && cp .mise.toml /mise/mise.toml \
     && cd / \
     && rm -rf /tmp/template
 
