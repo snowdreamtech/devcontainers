@@ -94,6 +94,8 @@ RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtec
     && cd /tmp/template \
     && make setup \
     && cp .mise.toml /mise/mise.toml \
+    && mise trust -a \
+    && mise install \
     && cd / \
     && rm -rf /tmp/template
 
