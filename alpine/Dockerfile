@@ -92,11 +92,11 @@ RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtec
     && cd /tmp/template \
     && make setup \
     && cp .mise.toml /mise/mise.toml \
+    && cd / \
+    && rm -rf /tmp/template \
     && cd /mise \
     && mise trust -a \
-    && (mise install || true) \
-    && cd / \
-    && rm -rf /tmp/template
+    && (mise install || true)
 
 
 COPY entrypoint.d /usr/local/bin/entrypoint.d
