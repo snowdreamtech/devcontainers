@@ -68,7 +68,7 @@ RUN set -eux \
     ca-certificates \
     gnupg2 \
     libstdc++ \
-    libatomic \                                                                                                                                                                                      
+    libatomic \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \
@@ -99,6 +99,7 @@ RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtec
     && cd /tmp/template \
     && make setup \
     && cp .mise.toml /mise/mise.toml \
+    && rm -f /mise/mise.lock \
     && mise trust -a \
     && mise install \
     && cd / \
