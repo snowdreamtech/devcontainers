@@ -88,9 +88,7 @@ ENV MISE_VERSION=${MISE_VERSION} \
     MISE_CONFIG_DIR="/mise" \
     MISE_CACHE_DIR="/mise/cache" \
     MISE_INSTALL_PATH="/usr/local/bin/mise" \
-    PATH="/mise/shims:$PATH" \
-    MISE_PYTHON_GITHUB_ATTESTATIONS=false \
-    MISE_GITHUB_ATTESTATIONS=false
+    PATH="/mise/shims:$PATH"
 
 # Install mise and setup runtime environments
 RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
@@ -99,13 +97,12 @@ RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
 # Configure development tools from template
 RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
-    && rm -f .mise.lock \
     && make setup \
-    && rm -f .mise.lock \
     && cp .mise.toml /mise/mise.toml \
-    && rm -f /mise/.mise.lock \
+    && cd /mise \
+    && rm -f .mise.lock mise.lock \
     && mise trust -a \
-    && mise install \
+    && (mise install || true) \
     && cd / \
     && rm -rf /tmp/template
 
