@@ -34,7 +34,7 @@ ARG DEBIAN_FRONTEND=noninteractive \
     USER=root \
     WORKDIR=/root \
     MISE_VERSION=2026.4.6 \
-    TEMPLATE_TAG=v0.4.0 
+    TEMPLATE_TAG=v0.6.0 
 
 ENV DEBIAN_FRONTEND=${DEBIAN_FRONTEND} \
     # keep the docker container running
