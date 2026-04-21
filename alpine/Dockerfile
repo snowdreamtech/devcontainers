@@ -33,7 +33,7 @@ ARG KEEPALIVE=0 \
     USER=root \
     WORKDIR=/root \
     MISE_VERSION=2026.4.6 \
-    TEMPLATE_TAG=v0.6.0 
+    TEMPLATE_TAG=v0.9.2 
 
 # keep the docker container running
 ENV KEEPALIVE=${KEEPALIVE} \
