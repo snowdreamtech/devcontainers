@@ -18,7 +18,7 @@ ARG BUILDTIME \
     USER=root \
     WORKDIR=/root \
     UNIRTM_VERSION=0.24.0 \
-    TEMPLATE_TAG=v0.9.2
+    TEMPLATE_TAG=v0.14.0
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
