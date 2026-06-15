@@ -207,6 +207,7 @@ jobs:
             *.gcr.io:443
             *.pkg.dev:443
             *.quay.io:443
+            quay.io:443
             *.dkr.ecr.*.amazonaws.com:443
             *.azurecr.io:443
             osv-vulnerabilities.storage.googleapis.com:443
