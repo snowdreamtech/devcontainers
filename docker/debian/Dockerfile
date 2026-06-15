@@ -18,7 +18,7 @@ ARG BUILDTIME \
     PUID=0 \
     USER=root \
     WORKDIR=/root \
-    MISE_VERSION=2026.4.6 \
+    UNIRTM_VERSION=0.24.0 \
     TEMPLATE_TAG=v0.9.2
 
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
@@ -67,28 +67,27 @@ RUN set -eux \
     && rm -rf /tmp/* \
     && rm -rf /var/tmp/*
 
-# Configure mise (polyglot runtime manager) environment variables
-ENV MISE_VERSION=${MISE_VERSION} \
-    MISE_DATA_DIR="/mise" \
-    MISE_CONFIG_DIR="/mise" \
-    MISE_CACHE_DIR="/mise/cache" \
-    MISE_INSTALL_PATH="/usr/local/bin/mise" \
-    PATH="/mise/shims:$PATH"
+# Configure unirtm (polyglot runtime manager) environment variables
+ENV UNIRTM_VERSION=${UNIRTM_VERSION} \
+    UNIRTM_DATA_DIR="/unirtm" \
+    UNIRTM_CONFIG_DIR="/unirtm" \
+    UNIRTM_CACHE_DIR="/unirtm/cache" \
+    PATH="/unirtm/shims:$PATH"
 
-# Install mise and setup runtime environments
-RUN curl https://mise.run | MISE_VERSION=v${MISE_VERSION} sh \
-    && mise trust -a && mise install
+# Install unirtm and setup runtime environments
+RUN curl -fsSL https://raw.githubusercontent.com/snowdreamtech/UniRTM/main/install.sh | UNIRTM_VERSION=${UNIRTM_VERSION} INSTALL_DIR=/usr/local/bin sh \
+    && unirtm trust -a && unirtm install
 
 # Configure development tools from template
 RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && make setup \
-    && cp .mise.toml /mise/mise.toml \
+    && cp .unirtm.toml /unirtm/unirtm.toml \
     && cd / \
     && rm -rf /tmp/template \
-    && cd /mise \
-    && mise trust -a \
-    && (mise install || true)
+    && cd /unirtm \
+    && unirtm trust -a \
+    && (unirtm install || true)
 
 # Container Orchestration Files
 COPY entrypoint.d /usr/local/bin/entrypoint.d

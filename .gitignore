@@ -33,10 +33,10 @@ lint_output.txt
 ci_summary.md
 
 # =============================================================================
-# Mise Temporary Artifacts (for Universal Tiered Strategy)
+# UniRTM Temporary Artifacts (for Universal Tiered Strategy)
 # =============================================================================
-.mise.*.toml
-.mise.toml.bak
+.unirtm.*.toml
+.unirtm.toml.bak
 .test.toml
 .setup.lock
 

@@ -15,7 +15,7 @@ This directory contains centralized configuration for [Step Security Harden Runn
 For simple workflows that only interact with GitHub:
 
 - GitHub API and content delivery
-- Mise installation
+- UniRTM installation
 
 **Used by**: cache, dco, dependabot-auto-merge, dependabot-sync, goreleaser, label-sync, labeler, pr-title, stale
 
@@ -43,7 +43,7 @@ For CI/CD workflows with containers and security scanning:
 
 For security audit workflows:
 
-- GitHub and mise endpoints
+- GitHub and unirtm endpoints
 - Container registries (minimal)
 - Security tools (trivy, sigstore, scorecard, osv)
 
@@ -105,7 +105,7 @@ python3 scripts/sync-harden-runner.py
 ## Requirements
 
 - Python 3.6+ with PyYAML: `pip install pyyaml`
-- Or use mise: `mise install python` (PyYAML included in project)
+- Or use unirtm: `unirtm install python` (PyYAML included in project)
 
 ## Troubleshooting
 
