@@ -75,11 +75,21 @@ ENV UNIRTM_VERSION=${UNIRTM_VERSION} \
     PATH="/unirtm/shims:$PATH"
 
 # Install unirtm and setup runtime environments
-RUN curl -fsSL https://raw.githubusercontent.com/snowdreamtech/UniRTM/main/install.sh | UNIRTM_VERSION=${UNIRTM_VERSION} INSTALL_DIR=/usr/local/bin sh \
+RUN --mount=type=secret,id=GITHUB_TOKEN \
+    if [ -s /run/secrets/GITHUB_TOKEN ]; then \
+      export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN); \
+      export GH_TOKEN=$(cat /run/secrets/GITHUB_TOKEN); \
+    fi \
+    && curl -fsSL https://raw.githubusercontent.com/snowdreamtech/UniRTM/main/install.sh | UNIRTM_VERSION=${UNIRTM_VERSION} INSTALL_DIR=/usr/local/bin sh \
     && unirtm trust -a && unirtm install
 
 # Configure development tools from template
-RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
+RUN --mount=type=secret,id=GITHUB_TOKEN \
+    if [ -s /run/secrets/GITHUB_TOKEN ]; then \
+      export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN); \
+      export GH_TOKEN=$(cat /run/secrets/GITHUB_TOKEN); \
+    fi \
+    && git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
     && cp .unirtm.toml /unirtm/unirtm.toml \
     && cd / \

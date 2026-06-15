@@ -378,6 +378,8 @@ jobs:
         uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf # v7.2.0
         with:
           context: ${{ matrix.context }}
+          secrets: |
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           build-args: |
             BUILDTIME=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
