@@ -1,5 +1,12 @@
 # Changelog
 
+## [13.4.0](https://github.com/snowdreamtech/devcontainers/compare/debian-v13.5.0...debian-v13.4.0) (2026-06-15)
+
+
+### 🐛 Bug Fixes
+
+* **build:** pass GITHUB_TOKEN to docker buildx to prevent API rate limiting ([521bcb2](https://github.com/snowdreamtech/devcontainers/commit/521bcb2ec0aee2cb3cec2a634bc066b7596df0d3))
+
 ## [13.4.0](https://github.com/snowdreamtech/base/compare/debian-v13.4.0...debian-v13.4.0) (2026-04-29)
 
 
