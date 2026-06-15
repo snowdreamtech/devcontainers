@@ -79,7 +79,6 @@ RUN curl -fsSL https://raw.githubusercontent.com/snowdreamtech/UniRTM/main/insta
 # Configure development tools from template
 RUN git clone --depth 1 --branch ${TEMPLATE_TAG} https://github.com/snowdreamtech/template.git /tmp/template \
     && cd /tmp/template \
-    && make setup \
     && cp .unirtm.toml /unirtm/unirtm.toml \
     && cd / \
     && rm -rf /tmp/template \
