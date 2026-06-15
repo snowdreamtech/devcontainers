@@ -311,7 +311,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.WORKFLOW_SECRET || secrets.GITHUB_TOKEN }}
 
       - name: "⚠️ Check Registry Login Status"
         if: steps.variant-filter.outputs.skip != 'true'
@@ -379,7 +379,7 @@ jobs:
         with:
           context: ${{ matrix.context }}
           secrets: |
-            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.WORKFLOW_SECRET || secrets.GITHUB_TOKEN }}
           build-args: |
             BUILDTIME=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.created'] }}
             VERSION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.version'] }}
