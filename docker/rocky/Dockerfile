@@ -59,6 +59,10 @@ RUN set -eux \
     gnupg2 \
     libstdc++ \
     libatomic \
+    xz \
+    bzip2 \
+    unzip \
+    zstd \
     && dnf -y --allowerasing autoremove \
     && dnf -y --allowerasing clean all \
     && rm -rf /var/cache/dnf \

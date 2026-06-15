@@ -61,6 +61,10 @@ RUN set -eux \
     gpg \
     libstdc++6 \
     libatomic1 \
+    xz-utils \
+    bzip2 \
+    unzip \
+    zstd \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy --purge autoremove \
     && DEBIAN_FRONTEND=noninteractive apt-get -qqy clean \
     && rm -rf /var/lib/apt/lists/* \

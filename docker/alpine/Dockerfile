@@ -58,7 +58,11 @@ RUN apk update \
     gnupg \
     libstdc++ \
     libatomic \
-    coreutils
+    coreutils \
+    xz \
+    bzip2 \
+    unzip \
+    zstd
 
 # Configure unirtm (polyglot runtime manager) environment variables
 ENV UNIRTM_VERSION=${UNIRTM_VERSION} \
