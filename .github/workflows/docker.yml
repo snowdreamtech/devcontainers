@@ -78,21 +78,21 @@ jobs:
           - variant: alpine
             version: "3.24.0"
             context: docker/alpine
-            platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64
+            platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
             package_manager: apk
 
           - variant: debian
             version: "13.5.0"
             context: docker/debian
-            platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64
+            platforms: linux/386,linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: true
             package_manager: apt-get
 
           - variant: rocky
             version: "10.2.0"
             context: docker/rocky
-            platforms: linux/amd64,linux/arm64
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
             is_latest: false
             package_manager: dnf
     concurrency:
@@ -442,13 +442,13 @@ jobs:
             # Set expected count based on variant
             case "${{ matrix.variant }}" in
               alpine|debian)
-                expected_count=8
+                expected_count=7
                 ;;
               rocky)
-                expected_count=4
+                expected_count=5
                 ;;
               *)
-                expected_count=8
+                expected_count=7
                 ;;
             esac
 
@@ -755,13 +755,13 @@ jobs:
                 # Set expected count based on variant
                 case "${{ matrix.variant }}" in
                   alpine|debian)
-                    expected_count=8
+                    expected_count=7
                     ;;
                   rocky)
-                    expected_count=4
+                    expected_count=5
                     ;;
                   *)
-                    expected_count=8
+                    expected_count=7
                     ;;
                 esac
                 echo "- **Platforms Verified:** ${{ steps.manifest-check.outputs.platform_count }}/${expected_count}"
@@ -782,13 +782,13 @@ jobs:
               # Set platform count based on variant
               case "${{ matrix.variant }}" in
                 alpine|debian)
-                  echo "- **Platforms:** 8 architectures"
+                  echo "- **Platforms:** 7 architectures"
                   ;;
                 rocky)
-                  echo "- **Platforms:** 4 architectures"
+                  echo "- **Platforms:** 5 architectures"
                   ;;
                 *)
-                  echo "- **Platforms:** 8 architectures"
+                  echo "- **Platforms:** 7 architectures"
                   ;;
               esac
               echo "- **Package Manager:** ${{ matrix.package_manager }}"
