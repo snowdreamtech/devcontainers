@@ -7,7 +7,7 @@
 
 Docker Image packaging for DevContainers. (amd64, arm64)
 
-# Usage
+## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
 
@@ -62,7 +62,7 @@ services:
     restart: unless-stopped
 ```
 
-# Development
+## Development
 
 ```bash
 docker buildx create --use --name build --node build --driver-opt network=host

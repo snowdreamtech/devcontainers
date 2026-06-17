@@ -7,7 +7,7 @@
 
 为 DevContainers 打包的 Docker 镜像。(amd64, arm64)
 
-# 使用说明
+## 使用说明
 
 为了帮助您开始使用此镜像创建容器，您可以使用 docker-compose 或 docker cli。
 
@@ -62,7 +62,7 @@ services:
     restart: unless-stopped
 ```
 
-# 开发
+## 开发
 
 ```bash
 docker buildx create --use --name build --node build --driver-opt network=host
