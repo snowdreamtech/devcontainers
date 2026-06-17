@@ -92,7 +92,7 @@ jobs:
           - variant: rocky
             version: "10.2.0"
             context: docker/rocky
-            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/riscv64,linux/s390x
+            platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
             is_latest: false
             package_manager: dnf
     concurrency:
@@ -445,7 +445,7 @@ jobs:
                 expected_count=7
                 ;;
               rocky)
-                expected_count=5
+                expected_count=4
                 ;;
               *)
                 expected_count=7
@@ -758,7 +758,7 @@ jobs:
                     expected_count=7
                     ;;
                   rocky)
-                    expected_count=5
+                    expected_count=4
                     ;;
                   *)
                     expected_count=7
@@ -785,7 +785,7 @@ jobs:
                   echo "- **Platforms:** 7 architectures"
                   ;;
                 rocky)
-                  echo "- **Platforms:** 5 architectures"
+                  echo "- **Platforms:** 4 architectures"
                   ;;
                 *)
                   echo "- **Platforms:** 7 architectures"
