@@ -1,7 +1,7 @@
 # DevContainers Image (Rocky Variant)
 # Extends snowdreamtech/rocky with additional tooling and configuration.
 
-FROM snowdreamtech/rocky:10.2.0
+FROM ghcr.io/snowdreamtech/rocky:10.2.0
 
 # Build-time Configuration
 ARG BUILDTIME \
@@ -23,13 +23,13 @@ ARG BUILDTIME \
 # Standard OCI Metadata (https://github.com/opencontainers/image-spec)
 LABEL org.opencontainers.image.authors="Snowdream Tech" \
     org.opencontainers.image.title="DevContainers Image Based On Rocky" \
-    org.opencontainers.image.description="Docker Images for DevContainers on Rocky. (i386, amd64, arm32v5, arm32v7, arm64, mips64le, ppc64le, s390x)" \
+    org.opencontainers.image.description="Docker Images for DevContainers on Rocky. (amd64, arm64, ppc64le, s390x)" \
     org.opencontainers.image.documentation="https://hub.docker.com/r/snowdreamtech/devcontainers" \
     org.opencontainers.image.base.name="snowdreamtech/devcontainers:rocky" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.source="https://github.com/snowdreamtech/devcontainers" \
     org.opencontainers.image.vendor="Snowdream Tech" \
-    org.opencontainers.image.version="${VERSION:-10.2.0}" \
+    org.opencontainers.image.version="${VERSION}" \
     org.opencontainers.image.created="${BUILDTIME}" \
     org.opencontainers.image.revision="${REVISION}" \
     org.opencontainers.image.url="https://github.com/snowdreamtech/devcontainers"
@@ -48,10 +48,10 @@ ENV KEEPALIVE=${KEEPALIVE} \
 
 # Additional tooling and configuration for DevContainers image
 RUN set -eux \
-    && dnf -y --allowerasing update \
-    && dnf -y --allowerasing install \
+    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true update \
+    && dnf -y --allowerasing --setopt=*.skip_if_unavailable=true install \
     bash \
-    vim \
+    vim-enhanced \
     make \
     git \
     curl \
